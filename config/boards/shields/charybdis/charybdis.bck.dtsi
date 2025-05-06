@@ -1,6 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/led/led.h>
-#include "charybdis-pinctrl.dtsi"
 
 / {
     chosen {
@@ -37,12 +36,12 @@
 &spi3 {
 	compatible = "nordic,nrf-spim";
 	status = "okay";
+    sck-pin = <21>; //old
+    mosi-pin = <24>; //old
+    miso-pin = <24>;//old same as mosi (3-wire spi)
 	cs-gpios = <&gpio0 23 GPIO_ACTIVE_LOW>;
 
 
-	pinctrl-0 = <&spi3_default>;
-	pinctrl-1 = <&spi3_sleep>;
-	pinctrl-names = "default", "sleep";
 	led_strip: ws2812@0 {
 		compatible = "worldsemi,ws2812-spi";
 		label = "WS2812";
